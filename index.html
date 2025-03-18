@@ -1,282 +1,539 @@
-<!DOCTYPE html>
-<html lang="en">
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="coinflip.css">
-    <link rel="stylesheet" href="style.css">
+* {
+    font-family: "Abhaya Libre", serif;
+}
+
+html{
+    overflow-x: hidden !important;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    background-color: black;
+    color: white;
+    font-family: "Abhaya Libre", serif;
+    overflow-x: hidden !important;
+}
+
+#scrollable {
+    display: block;
+    width: 518px;
+    height: 622px;
+    overflow-y: auto;
+    font-size: 25px;
+    scrollbar-color: white black;
+    border: 2px white solid
+}
+
+h2 {
+    color: #F9EC97;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* [td~="$"] {
+    color: rgb(162, 27, 27)
+} */
 
 
-</head>
 
-<body>
+.select-career+td {
+    color: #A4FF9C;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.heading-line {
+    width: 750px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-flow: column nowrap;
 
 
-    <h1 class="heading">Monthly Expenses Calculator</h1>
-    <hr class="heading-line">
-    <main>
-        <section class="row">
-            <section class="left-side">
-                <section class="move">
-                    <h2>Select A Career</h2>
-                    <table id="scrollable">
+}
 
+.row {
+    display: flex;
+    flex-direction: row;
 
-                    </table>
-                    <p>Yearly Custom Salary: <input type="number" placeholder="Input Here" id="CustomSalary"></p>
-                </section>
-                <section class="move2">
-                    <h2>Have Some Fun</h2>
-                    <p>Money Bet:<input type="number" placeholder="Input Here" class="bet" id="bet"></p>
+    justify-content: space-evenly;
 
-                    <hr>
-                    <aside>
-                        <button onclick="selected('heads')" id="head">Heads</button>
-                        <p>OR</p>
-                        <button onclick="selected('tails')" id="tail">Tails</button>
-                    </aside>
-
-                    <div class="coin" id="coin">
-                        <img src="icons/heads-nobg.png" alt="heads" id="actual-coin">
-                    </div>
-                    <button id="toss-button" onclick="tosscoin()">Toss Coin</button>
-                    <aside>
-                        <section>
-                            <p>Money Won:</p>
-                            <p class="result" id="result">Not flipped</p>
-                        </section>
-                        <section>
-                            <p>Total Gained or Lost:</p>
-                            <p class="total" id="total">0</p>
-                        </section>
-                    </aside>
-
-                </section>
-            </section>
-            <section class="rightside">
-                <section class="tax-calc">
-                    <h2>Taxes Calculator</h2>
-                    <table class="taxs">
-                        <tr>
-                            <td>Monthly Gross</td>
-                            <td>:</td>
-                            <td id="monthly">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>State Tax</td>
-                            <td>:</td>
-                            <td id="state">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Federal Tax</td>
-                            <td>:</td>
-                            <td id="fed">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Social Security</td>
-                            <td>:</td>
-                            <td id="social">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Medicare</td>
-                            <td>:</td>
-                            <td id="medicare">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>State Disability</td>
-                            <td>:</td>
-                            <td id="disability">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Retirement</td>
-                            <td>:</td>
-                            <td id="retirement">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Medical Insurance</td>
-                            <td>:</td>
-                            <td id="insurance">No Career Selected</td>
-                        </tr>
-                        <tr>
-                            <td>Total Left</td>
-                            <td>:</td>
-                            <td id="MonthlyPay">No Career Selected</td>
-                        </tr>
-
-                    </table>
-                    <hr>
-                    <h2>House Payment</h2>
-                    <table class="taxs">
-                        <tr>
-                            <td>Max House Payment Affordable</td>
-                            <td>:</td>
-                            <td id="housePay">No Career Selected</td>
-                        </tr>
-                    </table>
-                    <hr>
-                </section>
-
-                <section class="needs-wants">
-                    <h2>Need | Want | Save</h2>
-                    <section class="icon-folder">
-                        <section class="house-icon">
-                            <img src="/icons/house.svg" alt="image of house">
-                            <aside class="house-text">
-                                <p>Needs</p>
-                                <p>50%</p>
-
-                            </aside>
-                            <p id="under-needs">No Career Selected</p>
-                        </section>
-                        <section class="gift-icon">
-                            <img src="/icons/gift.svg" alt="image of gift">
-                            <aside class="gift-text">
-                                <p>Wants</p>
-                                <p>30%</p>
-
-                            </aside>
-                            <p id="under-gift">No Career Selected</p>
-                        </section>
-                        <section class="money-icon">
-                            <img src="/icons/money.svg" alt="image of money">
-                            <aside class="money-text">
-                                <p>Save</p>
-                                <p>20%</p>
-
-                            </aside>
-                            <p id="under-money">No Career Selected</p>
-                        </section>
-                    </section>
-                </section>
-                <section>
-                    <h2>Have More *Risker* Fun</h2>
-
-                    <div id="container">
-                        <div class="window-border">
-                            <div class="window">
-                                <div class="outer-spacer"></div>
-                                <div class="outer-col">
-                                    <div class="col"></div>
-                                </div>
-                                <div class="outer-spacer"></div>
-                                <div class="outer-col">
-                                    <div class="col"></div>
-                                </div>
-                                <div class="outer-spacer"></div>
-                                <div class="outer-col">
-                                    <div class="col"></div>
-                                </div>
-                                <div class="outer-spacer"></div>
-                                <div class="outer-col">
-                                    <div class="col"></div>
-                                </div>
-                                <div class="outer-spacer"></div>
-                                <div class="outer-col">
-                                    <div class="col"></div>
-                                </div>
-                                <div class="outer-spacer"></div>
-                            </div>
-                        </div>
-
-                        <input type="button" onclick="spin(this)" class="start-button" value="Spin" />
-                        <section class="slotMachine">
-                            <aside>
-                                <p>Money Bet:</p>
-                                <input type="number" placeholder="Input Here" class="bet" id="betSlot">
-                                <hr>
-                                <p id="winLoseSlot">You have not spun yet:</p>
-                                <p id="moneyWon">$0</p>
-                                <hr>
-                                <p>Total Money Left:</p>
-                                <p id="totalLeft">$0</p>
-                            </aside>
-                        </section>
-                    </div>
-                </section>
-            </section>
-        </section>
-        </section>
-        <section class="bottom-part">
-            <section>
-                <div>
-                    <img src="/icons/Rectangle 35.svg" alt="white">
-                    <p>Needs</p>
-                    <p id="needs">Nothing Inputed</p>
-                    <p>|</p>
-                    <p id="need-percent">0%</p>
-                </div>
-                <div>
-                    <img src="/icons/Rectangle 54.svg" alt=" peach">
-                    <p>Want</p>
-                    <p id="wants">Nothing Inputed</p>
-                    <p>|</p>
-                    <p id="Want">0%</p>
-                </div>
-                <div>
-                    <img src="/icons/Rectangle 55.svg" alt="green">
-                    <p>Save</p>
-                    <p id="savings">Nothing Inputed</p>
-                    <p>|</p>
-                    <p id="save-percent">0%</p>
-                </div>
-                <hr>
-
-                <div>
-                    <p>Total Spent</p>
-                    <p id="totalSpent">Nothing Inputed</p>
-                    <p>|</p>
-                    <p id="total-percent">0%</p>
-                </div>
-                <div class="chart">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </section>
-            <section>
-                <table id="checkbook">
-                    <tbody>
-                        <tr>
-                            <th>Type Of Purchase</th>
-                            <th>Name</th>
-                            <th>Amount</th>
-                            <th>Amount Remaining</th>
-                            <th>Add Payment</th>
-                            <th>Remove Payment</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select name="Type of purchase" id="type">
-                                    <option value="Need">Need</option>
-                                    <option value="Want">Want</option>
-                                    <option value="Save">Save</option>
-                                    <option value="Paid">Paid</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text">
-                            </td>
-                            <td>
-                                <input type="number" id="amount">
-                            </td>
-
-                            <td id="amountRemaining">Nothing Inputed</td>
-                            <td>
-                                <button onclick="check()">Add</button>
-                            </td>
-                            <td>
-                                <button>Remove</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </section>
-    </main>
+}
 
 
 
 
+.needs-wants {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 900px;
+}
+
+.icon-folder {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.gift-text,
+.house-text,
+.money-text {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.gift-text>p:nth-of-type(2),
+.house-text>p:nth-of-type(2),
+.money-text>p:nth-of-type(2) {
+    color: #A4FF9C;
+}
+
+
+
+/* #scrollable > tbody > tr > td{
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#scrollable > tbody > tr{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+#scrollable > tbody > tr > td:first-of-type{
+    width: 350px;
+}
+
+
+
+
+marquee{
+    position: absolute;
+    width: 100%;
+} */
+
+#scrollable>tbody>tr>td:last-of-type {
+    color: #A4FF9C;
+}
+
+
+.move>h2 {
+    margin-bottom: 0;
+
+
+}
+
+.move>p {
+    text-align: center;
+    font-size: 25px;
+
+    border-left: 2px white solid;
+    border-bottom: 2px white solid;
+    border-right: 2px white solid;
+
+    width: 100%;
+
+    margin: 0;
+}
+
+input {
+    font-size: 25px;
+    background-color: black;
+    border: none;
+    width: 250px;
+    color: #A4FF9C;
+    font-family: "Abhaya Libre", serif;
+
+
+}
+
+::placeholder {
+    color: #A4FF9C;
+    font-family: "Abhaya Libre", serif;
+}
+
+
+.taxs>tbody>tr>td {
+    font-size: 25px;
+}
+
+
+.taxs>tbody>tr>td:nth-of-type(2) {
+    color: #F9EC97;
+}
+
+.taxs>tbody>tr>td:last-of-type {
+    color: #A4FF9C;
+
+
+}
+
+.taxs>tbody>tr>td:first-of-type {
+    text-align: right;
+
+
+
+}
+
+.taxs {
+    border-spacing: 5px 5px;
+
+
+}
+
+.tax-calc>p {
+    font-size: 25px;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.tax-calc {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tax-calc>h2 {
+    margin-bottom: 5px;
+}
+
+.tax-calc>hr {
+    width: 600px;
+    margin-top: 30px;
+    border: 2px solid white;
+}
+
+
+.tax-calc>h2:last-of-type {
+    margin-top: 20px;
+}
+
+.needs-wants {}
+
+.needs-wants>h2 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.house-icon,
+.gift-icon,
+.money-icon {
+    font-size: 25px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.house-icon>p,
+.gift-icon>p,
+.money-icon>p {
+    margin-top: 0;
+    color: #F9EC97;
+}
+
+.house-text>p:first-of-type,
+.gift-text>p:first-of-type,
+.money-text>p:first-of-type {
+    margin-right: 15px;
+
+}
+
+.house-text,
+.gift-text,
+.money-text {
+    height: 70px;
+    margin-bottom: 0;
+}
+
+.bottom-part {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+.bottom-part>section:first-of-type {
+    display: flex;
+    flex-flow: column nowrap;
+    
+}
+
+.bottom-part>section:first-of-type>div {
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 25px;
+}
+
+.bottom-part>section:first-of-type>div:nth-of-type(2) {
+    color: #FFC49C;
+}
+
+.bottom-part>section:first-of-type>div:nth-of-type(3) {
+    color: #A4FF9C;
+
+}
+
+.bottom-part>section:first-of-type>div>p {
+    margin-left: 10px;
+}
+
+.bottom-part>section:first-of-type>div>p:nth-of-type(2) {
+    color: #F9EC97;
+    margin-left: 50px;
+}
+
+.bottom-part>section:first-of-type>div>p:nth-of-type(3) {
+    color: white;
+}
+
+.bottom-part>section:first-of-type>div>p:nth-of-type(4) {
+    color: #A4FF9C;
+}
+
+.bottom-part>section:first-of-type>hr {
+    width: 450px;
+}
+
+.bottom-part>section:first-of-type>div:last-of-type>p:nth-of-type(1) {
+    margin-left: 0;
+}
+
+.bottom-part>section:last-of-type>table {
+    border: 2px solid rgb(255, 255, 255);
+    border-collapse: collapse;
+    
+    font-size: 20px;
+    width: 500px;
+
+}
+
+.bottom-part>section:last-of-type>table>tbody>tr>th {
+    border: 2px solid rgb(255, 255, 255);
+    padding: 6px;
+}
+
+.bottom-part>section:last-of-type>table>tbody>tr>td {
+    border: 2px solid rgb(255, 255, 255);
+    text-align: center;
+}
+
+.bottom-part>section:last-of-type>table>tbody>tr>td>input {
+    width: 200px;
+    text-align: center;
+}
+
+select {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-family: "Abhaya Libre", serif;
+}
+
+.move2>p:first-of-type {
+    font-size: 34px;
+    margin-bottom: 0;
+    margin-left: 40px;
+}
+
+.move2 {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.move2>aside:first-of-type {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.move2>hr {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.move2>aside>p {
+    font-size: 34px;
+
+
+}
+
+.bet {
+    font-size: 34px;
+    width: 200px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.move2>aside>button {
+    border: 2px black solid;
+    background-color: black;
+    color: #F9EC97;
+    font-size: 34px;
+    font-family: "Abhaya Libre", serif;
+    cursor: pointer;
+    border-radius: 20px;
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.move2>button {
+    background-color: #F9EC97;
+    border: none;
+    font-size: 34px;
+    font-family: "Abhaya Libre", serif;
+    border-radius: 30px;
+    width: 190px;
+
+}
+
+.move2>aside:last-of-type {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.move2>aside:last-of-type>p:last-of-type {
+    color: #A4FF9C;
+    margin-left: 20px;
+}
+
+.move2 {
+    border-right: 2px solid white;
+
+}
+
+.move2>.coin>img {
+    width: 250px;
+    margin-bottom: 40px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.coin.flip {
+    animation: spin 1s cubic-bezier(0.4, 2.5, 0.6, 0.5);
+}
+
+.move2>aside:last-of-type>section {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 100%;
+    font-size: 34px;
+}
+
+.move2>aside:last-of-type>section>p:last-of-type {
+    color: #A4FF9C;
+    margin-left: 30px;
+}
+
+
+.move2>aside:last-of-type>section:last-of-type>p:last-of-type {
+    margin-top: 0;
+}
+
+.move2>aside:last-of-type>section:last-of-type>p {
+    margin-top: 0;
+}
+
+
+div>img {
+    width: 40px;
+}
+
+
+/* Popup container */
+.popup {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    display: none;
+    width: 600px;
+
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    height: 600px;
+
+}
+
+.slot{
+    
+}
+
+
+
+
+/* Popup arrow */
+
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    display: flex;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 
 
@@ -284,17 +541,486 @@
 
 
 
+#scrollable>tbody>tr>td:first-of-type {
+    display: flex;
+    width: 340px;
+    position: absolute;
+    border-right: 2px solid white;
+}
+
+#scrollable>tbody>tr>td:last-of-type {
+    display: flex;
+    margin-left: 360px;
+
+}
+
+
+#scrollable {
+    position: relative;
+    overflow-y: scroll;
+}
+
+.marquee {
+    height: 35px;
+    width: 100%;
+
+    overflow: hidden;
+    position: relative;
+    background-color: #000000;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+
+
+
+.marquee .marqueeone {
+    animation: marquee 20s linear infinite
+}
+
+.marquee .marqueetwo {
+    animation: marquee 20s linear 5s infinite
+}
+
+.marquee .marqueethree {
+    animation: marquee 20s linear 10s infinite
+}
+
+.marquee .marqueefour {
+    animation: marquee 20s linear 15s infinite
+}
+
+
+.marquee div {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.marquee:hover div {
+    animation-play-state: paused;
+    color: #FFC49C;
+}
+
+
+@keyframes marquee {
+    0% {
+        left: 100%;
+    }
+
+    50% {
+        left: -100%;
+    }
+
+    100% {
+        left: -100%
+    }
+}
+
+
+
+canvas {
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+td>button {
+    background-color: black;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+
+
+td>button:hover {
+    color: #F9EC97;
+}
+
+.move>p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+
+.bottom-part {
+    border-top: 2px solid white;
+}
+
+.needs-wants{
+    border-bottom: 2px solid white;
+}
+
+.bottom-part > section{
+    margin-top: 40px;
+}
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <script src="jobs.js" defer></script>
-    <script src="script.js" defer></script>
-    <script src="coinflip.js" defer></script>
 
-</body>
+@media screen and (max-width:1600px){
+    html, body {
+        overflow-x: hidden !important;
+        width: 100%;
+        height: 100%;
+    }
+    #container{
+        transform: scale(0.8);
+        right: 15%;
+    }
+    /* #container, .row, .bottom-part {
+        max-width: 100%;
+    } */
+   
+}
 
-</html>
+@media screen and (max-width:1440px){
+    /* .bottom-part{
+        width: 1440px;
+    }
+
+    h2{
+        font-size: 45px;
+    }
+
+    /* .marqueeone, .marqueetwo, .marqueethree, .marqueefour{
+        height: 0px !important;
+    } */
+     /* .marquee{
+        height: 28px;
+     }
+
+    .marquee div{
+        font-size: 20px;
+        background-color: #000000;
+    }
+
+    #scrollable>tbody>tr>td:last-of-type {
+        margin-left: 230px;
+        font-size: 20px;
+    }
+
+    #scrollable>tbody>tr>td:first-of-type {
+ 
+        width: 200px;
+    }
+
+    #scrollable{
+       width: 400px; 
+    }
+
+    .move>p {
+        font-size: 20px;
+        width: 400px;
+    }
+
+    .move2{
+        transform: scale(0.8);
+    }  */
+
+    /* input{
+        font-size: 20px;
+    }
+
+    .taxs>tbody>tr>td {
+        font-size: 20px;
+    }
+
+    #container{
+        top: 1300px;
+    }
+
+    .move2 > p{
+        font-size: 20px  !important;
+    }
+
+    .bet{
+        font-size: 20px;
+    }
+
+    .move2>aside:last-of-type>section{
+        font-size: 20px;
+    } */
+
+    .row{
+        transform: scale(0.8);
+        position: absolute;
+        top: -50px;
+    }
+
+    .bottom-part{
+        position: absolute;
+        transform: scale(0.8);
+        top: 1420px;
+    }
+
+    /* .rightside{
+        transform: scale(0.8);
+    } */
+     /* body{
+        transform: scale(0.8);
+     } */
+
+     .heading{
+        font-size: 60px;
+        width: 100vw;
+     }
+}
+
+@media screen and (max-width:1280px){
+    #container{
+        transform: scale(0.7);
+        right: 15%;
+        top: 1400px;
+    }
+    .row{
+        transform: scale(0.75);
+        position: absolute;
+        top: -70px;
+        left: -80px;
+    }
+
+    .bottom-part{
+        position: absolute;
+        transform: scale(0.75);
+        top: 1340px;
+    }
+}
+
+@media screen and (max-width:1130px){
+    /* #container{
+        transform: scale(0.7);
+        right: 15%;
+        top: 1400px;
+    } */
+    .row{
+        transform: scale(0.75);
+        position: absolute;
+        top: -70px;
+        left: -150px;
+    }
+
+    .bottom-part{
+       
+        top: 1340px;
+        left: -100px;
+    }
+
+    
+}
+
+@media screen and (max-width:1060px){
+    #container{
+        transform: scale(0.75);
+        right: 20%;
+    }
+    .row{
+        transform: scale(0.68);
+        position: absolute;
+        top: -130px;
+        left: -200px;
+    }
+
+    .bottom-part{
+        transform: scale(0.68);
+        top: 1195px;
+        left: -150px;
+    }
+
+    
+}
+
+@media screen and (max-width:960px){
+    .needs-wants{
+        transform: scale(0.83);
+    }
+
+    
+}
+
+@media screen and (max-width:920px){
+    .row{
+        transform: scale(0.60);
+        position: absolute;
+        top: -200px;
+        left: -250px;
+    }
+
+    .bottom-part{
+        transform: scale(0.60);
+        top: 1030px;
+        left: -180px;
+    }
+
+    
+}
+
+
+@media screen and (max-width:830px){
+    .row{
+        transform: scale(0.55);
+        position: absolute;
+        top: -300px;
+        left: -300px;
+    }
+
+    .bottom-part{
+        transform: scale(0.55);
+        top: 870px;
+        left: -250px;
+    }
+
+    .heading{
+        font-size: 40px;
+    }
+
+    
+}
+
+@media screen and (max-width:746px){
+    .needs-wants{
+        transform: scale(0.75);
+    }
+    
+    #container{
+        
+        right: 24%;
+    }
+
+    .row{
+        transform: scale(0.48);
+        position: absolute;
+        top: -370px;
+        left: -360px;
+    }
+
+    .bottom-part{
+        transform: scale(0.48);
+        top: 720px;
+        left: -290px;
+    }
+
+    
+}
+
+
+@media screen and (max-width:630px){
+    .needs-wants{
+        transform: scale(0.75);
+    }
+    
+    #container{
+        transform: scale(0.7);
+        right: 24%;
+    }
+
+    .row{
+        transform: scale(0.45);
+        position: absolute;
+        top: -380px;
+        left: -380px;
+    }
+
+    .bottom-part{
+        transform: scale(0.45);
+        top: 680px;
+        left: -320px;
+    }
+
+    #container{
+        
+        right: 27%;
+        top: 1200px;
+    }
+
+    .slotMachine {
+        left: 150px;
+        top: 500px;
+        
+    }
+
+    .slotMachine > aside {
+        border-left: none;
+        border-top: 2px solid white;
+      }
+}
+
+@media screen and (max-width:590px){
+    h2{
+        font-size: 40px;
+    }
+
+    .rightside{
+        display: flex;
+        width: 880px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-flow: column;
+
+        margin-left: 50px;
+    }
+
+    .needs-wants {
+        width: 600px;
+      }
+      .bottom-part{
+        flex-flow: column;
+        left: -120px;
+        top:560px;
+      }
+      
+}
+
+@media screen and (max-width:510px){
+    main{
+        transform: scale(0.9);
+        position: absolute;
+    }
+    .heading{
+        font-size: 30px;
+    }
+    .bottom-part{
+        flex-flow: column;
+        left: -120px;
+        top:570px;
+      }
+}
+
+@media screen and (max-width:480px){
+    html, body {
+        overflow-x: hidden !important;
+        width: 100%;
+        height: 100%;
+    }
+    main{
+        transform: scale(0.8);
+        position: absolute;
+    }
+    .heading{
+        font-size: 30px;
+    }
+    .bottom-part{
+        flex-flow: column;
+        left: -120px;
+        top:570px;
+      }
+}
+
+
