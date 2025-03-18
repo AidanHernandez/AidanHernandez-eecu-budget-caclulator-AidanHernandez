@@ -1,0 +1,246 @@
+/*
+ * Some general styling
+ */
+
+ * {
+    box-sizing: border-box;
+    
+}
+
+:root {
+    --item-height: 100px;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    color: white;
+}
+
+/*
+ * Style the orange box
+ */
+
+.start-button {
+    display: block;
+    margin: 1em auto;
+    background-color: #F9EC97;
+    border: none;
+    font-size: 34px;
+    font-family: "Abhaya Libre", serif;
+    border-radius: 30px;
+    width: 190px;
+    color: black;
+}
+
+#container {
+    
+    padding: 50px;
+    
+    position: absolute;
+    top: 1500px;
+    right:25%;
+    margin-left: -320px;
+    margin-top: -220px;
+}
+
+.window {
+    position: relative;
+    overflow: hidden;
+    height: calc(3 * var(--item-height));
+}
+
+.window::before {
+    content: "";
+    clear: both;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 6px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.window::after {
+    content: "";
+    clear: both;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 6px;
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+}
+
+.window-border {
+    padding: 5px;
+    background-image: linear-gradient(to bottom, #fcf8ad, #f8f3cd, #f9e13d);
+    box-shadow: 0 6px 4px -5px #eca654 inset;
+}
+
+/*
+ * Reels and icon styling
+ */
+
+.icon {
+    width: 80px;
+    height: var(--item-height);
+    display: block;
+    position: relative;
+
+    /*animation: wiggle 0.1s linear infinite;*/
+}
+
+.outer-col {
+    overflow-y: hidden;
+    width: 100px;
+    float: left;
+    background-color: #eee;
+    background-image: linear-gradient(#16013c, #741a5e, #430155, #16013c);
+    height: calc(var(--item-height) * 3);
+}
+
+.outer-spacer {
+    width: 8px;
+    height: 100%;
+    float: left;
+    border-right: 2px solid #f7ce6c38;
+    background-image: linear-gradient(#be4d01, #893802);
+}
+
+.col {
+    padding: 0 10px;
+    will-change: true;
+    transform: translateY(calc(-100% + var(--item-height) * 3));
+}
+
+.col img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    position: relative;
+    z-index: 3;
+}
+
+/* shadow effect behind the items */
+.col .icon::after {
+    content: "";
+    clear: both;
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 1px;
+    height: 1px;
+    background-color: white;
+    box-shadow: 0 0 35px 30px rgba(12, 0, 14, 0.69);
+    z-index: 2;
+    border-radius: 100px;
+}
+
+/*
+ * Spinning animation
+ */
+
+#container.spinning .outer-col:nth-of-type(2) .col {
+    animation-delay: 0.01s;
+}
+
+#container.spinning .outer-col:nth-of-type(3) .col {
+    animation-delay: 0.02s;
+}
+
+#container.spinning .outer-col:nth-of-type(4) .col {
+    animation-delay: 0.03s;
+}
+
+#container.spinning .col {
+    animation-name: scroll;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.65, .97, .72, 1);
+}
+
+@keyframes scroll {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/*@keyframes wiggle {
+    0% {
+        transform: rotate(7deg);
+    }
+    50% {
+        transform: rotate(-7deg);
+    }
+    100% {
+        transform: rotate(7deg);
+    }
+}*/
+
+
+
+
+.slotMachine {
+    display: flex;
+    flex-flow: row;
+    position: absolute;
+    right: -350px;
+    top:50px;
+}
+
+.slotMachine > aside> p{
+    font-size: 34px;
+}
+
+.slotMachine > aside{
+    border-left: 2px solid white;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+    width: 350px;
+}
+
+
+
+
+
+.slotMachine > aside> p{
+    margin-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.slotMachine > aside> hr{
+   width: 260px;
+}
+
+.slotMachine{
+    margin-top: 30px;
+}
+
+.slotMachine > aside> p:nth-of-type(3){
+    color: #A4FF9C;
+}
+
+.slotMachine > aside> p:nth-of-type(5){
+    color: #A4FF9C;
+}
+
+
+input {
+    font-size: 34px;
+    background-color: black;
+    border: none;
+    width: 250px;
+    color: #A4FF9C;
+    font-family: "Abhaya Libre", serif;
+    text-align: center;
+    margin: 0;
+}
+
+::placeholder {
+    color: #A4FF9C;
+    font-family: "Abhaya Libre", serif;
+}

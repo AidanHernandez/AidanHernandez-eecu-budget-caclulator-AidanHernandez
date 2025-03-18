@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="coinflip.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+    <h1 class="heading">Monthly Expenses Calculator</h1>
+    <hr class="heading-line">
+    <main>
+        <section class="row">
+            <section class="left-side">
+                <section class="move">
+                    <h2>Select A Career</h2>
+                    <table id="scrollable">
+
+
+                    </table>
+                    <p>Yearly Custom Salary: <input type="number" placeholder="Input Here" id="CustomSalary"></p>
+                </section>
+                <section class="move2">
+                    <h2>Have Some Fun</h2>
+                    <p>Money Bet:<input type="number" placeholder="Input Here" class="bet" id="bet"></p>
+
+                    <hr>
+                    <aside>
+                        <button onclick="selected('heads')" id="head">Heads</button>
+                        <p>OR</p>
+                        <button onclick="selected('tails')" id="tail">Tails</button>
+                    </aside>
+
+                    <div class="coin" id="coin">
+                        <img src="icons/heads-nobg.png" alt="heads" id="actual-coin">
+                    </div>
+                    <button id="toss-button" onclick="tosscoin()">Toss Coin</button>
+                    <aside>
+                        <section>
+                            <p>Money Won:</p>
+                            <p class="result" id="result">Not flipped</p>
+                        </section>
+                        <section>
+                            <p>Total Gained or Lost:</p>
+                            <p class="total" id="total">0</p>
+                        </section>
+                    </aside>
+
+                </section>
+            </section>
+            <section class="rightside">
+                <section class="tax-calc">
+                    <h2>Taxes Calculator</h2>
+                    <table class="taxs">
+                        <tr>
+                            <td>Monthly Gross</td>
+                            <td>:</td>
+                            <td id="monthly">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>State Tax</td>
+                            <td>:</td>
+                            <td id="state">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Federal Tax</td>
+                            <td>:</td>
+                            <td id="fed">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Social Security</td>
+                            <td>:</td>
+                            <td id="social">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Medicare</td>
+                            <td>:</td>
+                            <td id="medicare">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>State Disability</td>
+                            <td>:</td>
+                            <td id="disability">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Retirement</td>
+                            <td>:</td>
+                            <td id="retirement">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Insurance</td>
+                            <td>:</td>
+                            <td id="insurance">No Career Selected</td>
+                        </tr>
+                        <tr>
+                            <td>Total Left</td>
+                            <td>:</td>
+                            <td id="MonthlyPay">No Career Selected</td>
+                        </tr>
+
+                    </table>
+                    <hr>
+                    <h2>House Payment</h2>
+                    <table class="taxs">
+                        <tr>
+                            <td>Max House Payment Affordable</td>
+                            <td>:</td>
+                            <td id="housePay">No Career Selected</td>
+                        </tr>
+                    </table>
+                    <hr>
+                </section>
+
+                <section class="needs-wants">
+                    <h2>Need | Want | Save</h2>
+                    <section class="icon-folder">
+                        <section class="house-icon">
+                            <img src="/icons/house.svg" alt="image of house">
+                            <aside class="house-text">
+                                <p>Needs</p>
+                                <p>50%</p>
+
+                            </aside>
+                            <p id="under-needs">No Career Selected</p>
+                        </section>
+                        <section class="gift-icon">
+                            <img src="/icons/gift.svg" alt="image of gift">
+                            <aside class="gift-text">
+                                <p>Wants</p>
+                                <p>30%</p>
+
+                            </aside>
+                            <p id="under-gift">No Career Selected</p>
+                        </section>
+                        <section class="money-icon">
+                            <img src="/icons/money.svg" alt="image of money">
+                            <aside class="money-text">
+                                <p>Save</p>
+                                <p>20%</p>
+
+                            </aside>
+                            <p id="under-money">No Career Selected</p>
+                        </section>
+                    </section>
+                </section>
+                <section>
+                    <h2>Have More *Risker* Fun</h2>
+
+                    <div id="container">
+                        <div class="window-border">
+                            <div class="window">
+                                <div class="outer-spacer"></div>
+                                <div class="outer-col">
+                                    <div class="col"></div>
+                                </div>
+                                <div class="outer-spacer"></div>
+                                <div class="outer-col">
+                                    <div class="col"></div>
+                                </div>
+                                <div class="outer-spacer"></div>
+                                <div class="outer-col">
+                                    <div class="col"></div>
+                                </div>
+                                <div class="outer-spacer"></div>
+                                <div class="outer-col">
+                                    <div class="col"></div>
+                                </div>
+                                <div class="outer-spacer"></div>
+                                <div class="outer-col">
+                                    <div class="col"></div>
+                                </div>
+                                <div class="outer-spacer"></div>
+                            </div>
+                        </div>
+
+                        <input type="button" onclick="spin(this)" class="start-button" value="Spin" />
+                        <section class="slotMachine">
+                            <aside>
+                                <p>Money Bet:</p>
+                                <input type="number" placeholder="Input Here" class="bet" id="betSlot">
+                                <hr>
+                                <p id="winLoseSlot">You have not spun yet:</p>
+                                <p id="moneyWon">$0</p>
+                                <hr>
+                                <p>Total Money Left:</p>
+                                <p id="totalLeft">$0</p>
+                            </aside>
+                        </section>
+                    </div>
+                </section>
+            </section>
+        </section>
+        </section>
+        <section class="bottom-part">
+            <section>
+                <div>
+                    <img src="/icons/Rectangle 35.svg" alt="white">
+                    <p>Needs</p>
+                    <p id="needs">Nothing Inputed</p>
+                    <p>|</p>
+                    <p id="need-percent">0%</p>
+                </div>
+                <div>
+                    <img src="/icons/Rectangle 54.svg" alt=" peach">
+                    <p>Want</p>
+                    <p id="wants">Nothing Inputed</p>
+                    <p>|</p>
+                    <p id="Want">0%</p>
+                </div>
+                <div>
+                    <img src="/icons/Rectangle 55.svg" alt="green">
+                    <p>Save</p>
+                    <p id="savings">Nothing Inputed</p>
+                    <p>|</p>
+                    <p id="save-percent">0%</p>
+                </div>
+                <hr>
+
+                <div>
+                    <p>Total Spent</p>
+                    <p id="totalSpent">Nothing Inputed</p>
+                    <p>|</p>
+                    <p id="total-percent">0%</p>
+                </div>
+                <div class="chart">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </section>
+            <section>
+                <table id="checkbook">
+                    <tbody>
+                        <tr>
+                            <th>Type Of Purchase</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Amount Remaining</th>
+                            <th>Add Payment</th>
+                            <th>Remove Payment</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="Type of purchase" id="type">
+                                    <option value="Need">Need</option>
+                                    <option value="Want">Want</option>
+                                    <option value="Save">Save</option>
+                                    <option value="Paid">Paid</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text">
+                            </td>
+                            <td>
+                                <input type="number" id="amount">
+                            </td>
+
+                            <td id="amountRemaining">Nothing Inputed</td>
+                            <td>
+                                <button onclick="check()">Add</button>
+                            </td>
+                            <td>
+                                <button>Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script src="jobs.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="coinflip.js" defer></script>
+
+</body>
+
+</html>
