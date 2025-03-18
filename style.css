@@ -907,4 +907,80 @@ td>button:hover {
 }
 
 
+@media screen and (max-width:630px){
+    .needs-wants{
+        transform: scale(0.75);
+    }
+    
+    #container{
+        transform: scale(0.7);
+        right: 24%;
+    }
+
+    .row{
+        transform: scale(0.45);
+        position: absolute;
+        top: -380px;
+        left: -380px;
+    }
+
+    .bottom-part{
+        transform: scale(0.45);
+        top: 680px;
+        left: -320px;
+    }
+
+    #container{
+        
+        right: 27%;
+        top: 1200px;
+    }
+
+    .slotMachine {
+        left: 150px;
+        top: 500px;
+        
+    }
+
+    .slotMachine > aside {
+        border-left: none;
+        border-top: 2px solid white;
+      }
+}
+
+@media screen and (max-width:590px){
+    h2{
+        font-size: 40px;
+    }
+
+    .rightside{
+        display: flex;
+        width: 880px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-flow: column;
+
+        margin-left: 50px;
+    }
+
+    .needs-wants {
+        width: 600px;
+      }
+      .bottom-part{
+        flex-flow: column;
+        left: -120px;
+        top:560px;
+      }
+      
+}
+
+@media screen and (max-width:510px){
+    main{
+        transform: scale(0.9);
+        position: absolute;
+    }
+    .heading{
+        font-size: 30px;
+    }
+}
 
